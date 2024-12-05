@@ -18,13 +18,13 @@ def is_enabled(value, default):
         return default
 
 #main variables
-API_ID = int(environ.get('API_ID', ''))
-API_HASH = environ.get('API_HASH', '')
-BOT_TOKEN = environ.get('BOT_TOKEN', '')
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
-USERNAME = environ.get('USERNAME', 'https://telegram.me/TechifyGuru')
+API_ID = int(environ.get('API_ID', '2054877'))
+API_HASH = environ.get('API_HASH', '4227c1e45e462209a3dcc67ada88a44f')
+BOT_TOKEN = environ.get('BOT_TOKEN', '7184229986:AAEW-OlDTSgfaxDF0VpFEX-YYA5LWCUSZP8')
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '957158815').split()]
+USERNAME = environ.get('USERNAME', 'https://telegram.me/lovetoride')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', ''))
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001686416905 -1002161064582').split()]
 DATABASE_URI = environ.get('DATABASE_URI', "")
 DATABASE_URI2 = environ.get('DATABASE_URI2', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Rahul")
