@@ -125,21 +125,7 @@ async def start(client:Client, message):
 
     settings = await get_settings(int(data.split("_", 2)[1]))
     id = settings.get('fsub_id', AUTH_CHANNEL)
-    channel = int(id)
-    if settings.get('fsub_id', AUTH_CHANNEL) and not await is_subscribed(client, message.from_user.id, channel):
-        invite_link = await client.create_chat_invite_link(channel)
-        btn = [[
-                InlineKeyboardButton("⛔️ ᴊᴏɪɴ ɴᴏᴡ ⛔️", url=invite_link.invite_link)
-                ]]
-        if message.command[1] != "subscribe":
-            btn.append([InlineKeyboardButton("♻️ ᴛʀʏ ᴀɢᴀɪɴ ♻️", url=f"https://t.me/{temp.U_NAME}?start={message.command[1]}")])
-        await client.send_message(
-            chat_id=message.from_user.id,
-            text=script.FSUB_TXT.format(message.from_user.mention),
-            reply_markup=InlineKeyboardMarkup(btn),
-            parse_mode=enums.ParseMode.HTML
-        )
-        return
+
             
     user_id = m.from_user.id
     if not await db.has_premium_access(user_id):
@@ -222,16 +208,16 @@ async def start(client:Client, message):
     settings = await get_settings(int(grp_id))
     if type_ != 'shortlink' and not settings.get("is_verify", IS_VERIFY):
         link = await get_shortlink(f"https://t.me/{temp.U_NAME}?start=shortlink_{user_id}_{file_id}", grp_id)
+        link1 = f'https://t.me/{temp.U_NAME}?start=shortlink_{user_id}_{file_id}'
         mention = message.from_user.mention
         wish = get_status()
         name = files.file_name
         size = get_size(files.file_size)
         btn = [[
-            InlineKeyboardButton("✅ ꜰɪʟᴇ ✅", url=link),
-            InlineKeyboardButton("⁉️ ʜᴏᴡ ᴛᴏ ᴏᴘᴇɴ ⁉️", url=settings['tutorial'])
-        ],[
-            InlineKeyboardButton("😁 ʙᴜʏ ꜱᴜʙꜱᴄʀɪᴘᴛɪᴏɴ - ᴅɪʀᴇᴄᴛ ꜰɪʟᴇꜱ 😁", callback_data='buy_premium')
-        ]]
+            InlineKeyboardButton("✅ Download ꜰɪʟᴇ ✅", url=link1),
+            InlineKeyboardButton("⁉️ ʜᴏᴡ ᴛᴏ Download ⁉️", url=settings['tutorial'])
+        ]
+        ]
         await message.reply(f"<b>ʜʏ {mention} {wish},</b>\n\n📂 𝐍𝐚𝐦𝐞 ➠  <code>{name}</code>\n\n♻️ 𝐒𝐢𝐳𝐞 ➠  {size}\n\n<b><i>ʏᴏᴜʀ ꜰɪʟᴇ ɪꜱ ʀᴇᴀᴅʏ, ᴘʟᴇᴀꜱᴇ ɢᴇᴛ ᴜꜱɪɴɢ ᴛʜɪꜱ ʟɪɴᴋ 😋.</i></b>", reply_markup=InlineKeyboardMarkup(btn), protect_content=True)
         return
 
