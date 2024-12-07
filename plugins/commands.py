@@ -204,16 +204,16 @@ async def start(client:Client, message):
     if type_ != 'shortlink' and not settings.get("is_verify", IS_VERIFY):
         link = await get_shortlink(f"https://t.me/{temp.U_NAME}?start=shortlink_{user_id}_{file_id}", grp_id)
         link1 = f'https://t.me/{temp.U_NAME}?start=shortlink_{user_id}_{file_id}'
-        mention = message.from_user.mention
-        wish = get_status()
+        
+        
         name = files.file_name
         size = get_size(files.file_size)
         btn = [[
-            InlineKeyboardButton("✅ Download ꜰɪʟᴇ ✅", url=link1),
+            InlineKeyboardButton("✅ Download ꜰɪʟᴇ ✅", url=link),
             InlineKeyboardButton("⁉️ ʜᴏᴡ ᴛᴏ Download ⁉️", url=settings['tutorial'])
         ]
         ]
-        await message.reply(f"<b>ʜʏ {mention} {wish},</b>\n\n📂 𝐍𝐚𝐦𝐞 ➠  <code>{name}</code>\n\n♻️ 𝐒𝐢𝐳𝐞 ➠  {size}\n\n<b><i>ʏᴏᴜʀ ꜰɪʟᴇ ɪꜱ ʀᴇᴀᴅʏ, ᴘʟᴇᴀꜱᴇ ɢᴇᴛ ᴜꜱɪɴɢ ᴛʜɪꜱ ʟɪɴᴋ 😋.</i></b>", reply_markup=InlineKeyboardMarkup(btn), protect_content=True)
+        await message.reply(f"📂 𝐍𝐚𝐦𝐞 ➠  <code>{name}</code>\n\n♻️ 𝐒𝐢𝐳𝐞 ➠  {size}\n\n<b><i>ʏᴏᴜʀ ꜰɪʟᴇ ɪꜱ ʀᴇᴀᴅʏ, ᴘʟᴇᴀꜱᴇ ɢᴇᴛ ᴜꜱɪɴɢ ᴛʜɪꜱ ʟɪɴᴋ 😋.</i></b>", reply_markup=InlineKeyboardMarkup(btn), protect_content=True)
         return
 
     files_ = await get_file_details(file_id)           
