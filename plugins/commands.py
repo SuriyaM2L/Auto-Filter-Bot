@@ -180,7 +180,7 @@ async def start(client:Client, message):
                 file_caption=file.caption
             )
             btn=[[
-                InlineKeyboardButton("ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 👀 / ꜰᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ 📥", callback_data=f'stream#{file.file_id}')
+                InlineKeyboardButton("Update Channel",url = 'https://t.me/tgtamillinks')
             ]]
             dlt=await client.send_cached_media(
                 chat_id=message.from_user.id,
@@ -228,9 +228,9 @@ async def start(client:Client, message):
         file_size = get_size(files.file_size),
         file_caption=files.caption
     )
-    btn = [[
-        InlineKeyboardButton("ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 👀 / ꜰᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ 📥", callback_data=f'stream#{file_id}')
-    ]]
+    btn=[[
+                InlineKeyboardButton("Update Channel",url = 'https://t.me/tgtamillinks')
+            ]]
     d=await client.send_cached_media(
         chat_id=message.from_user.id,
         file_id=file_id,
