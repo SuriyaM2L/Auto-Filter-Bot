@@ -73,14 +73,13 @@ async def start(client:Client, message):
         await db.add_user(message.from_user.id, message.from_user.first_name)
         await client.send_message(LOG_CHANNEL, script.NEW_USER_TXT.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
-        buttons = [[
-            InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://telegram.me/{temp.U_NAME}?startgroup=start')
-        ],[
-            InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
-            InlineKeyboardButton('💸 ᴘʀᴇᴍɪᴜᴍ', callback_data='buy_premium')
-        ],[
-            InlineKeyboardButton('🚫 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 🚫', callback_data='earn')
-        ]]   
+        buttons = [[    
+            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝙂𝙧𝙤𝙪𝙥’¬',url='https://t.me/discussion_hd_movies')],
+            [
+            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝘾𝙝𝙖𝙣𝙣𝙚𝙡˜„', url='https://t.me/tamil_links_official')
+            ],[
+            InlineKeyboardButton('𝙎𝙚𝙖𝙧𝙘𝙝 𝙃𝙚𝙧𝙚 𝙈𝙤𝙫𝙞𝙚𝙨', switch_inline_query_current_chat='')
+            ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_text(script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
             reply_markup=reply_markup,
@@ -101,14 +100,13 @@ async def start(client:Client, message):
                 reply_markup=InlineKeyboardMarkup(btn)
             )
             return
-        buttons = [[
-            InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
-        ],[
-            InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
-            InlineKeyboardButton('💸 ᴘʀᴇᴍɪᴜᴍ', callback_data='buy_premium')
-        ],[
-            InlineKeyboardButton('🚫 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 🚫', callback_data='earn')
-        ]]
+        buttons = [[    
+            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝙂𝙧𝙤𝙪𝙥’¬',url='https://t.me/discussion_hd_movies')],
+            [
+            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝘾𝙝𝙖𝙣𝙣𝙚𝙡˜„', url='https://t.me/tamil_links_official')
+            ],[
+            InlineKeyboardButton('𝙎𝙚𝙖𝙧𝙘𝙝 𝙃𝙚𝙧𝙚 𝙈𝙤𝙫𝙞𝙚𝙨', switch_inline_query_current_chat='')
+            ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_text(
             text=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
