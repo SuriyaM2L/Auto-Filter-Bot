@@ -404,14 +404,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer(f"ʏᴏᴜ sᴇʟᴇᴄᴛᴇᴅ {lang.title()} ʟᴀɴɢᴜᴀɢᴇ ⚡️", show_alert=True)
   
     elif query.data == "start":
-        buttons = [[
-            InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
-        ],[
-            InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
-            InlineKeyboardButton('💸 ᴘʀᴇᴍɪᴜᴍ', callback_data='buy_premium')
-        ],[
-            InlineKeyboardButton('🚫 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 🚫', callback_data='earn')
-        ]]
+        buttons = [[    
+            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝙂𝙧𝙤𝙪𝙥’¬',url='https://t.me/discussion_hd_movies')],
+            [
+            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝘾𝙝𝙖𝙣𝙣𝙚𝙡˜„', url='https://t.me/tamil_links_official')
+            ],[
+            InlineKeyboardButton('𝙎𝙚𝙖𝙧𝙘𝙝 𝙃𝙚𝙧𝙚 𝙈𝙤𝙫𝙞𝙚𝙨', switch_inline_query_current_chat='')
+            ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.START_TXT.format(query.from_user.mention, get_status(), query.from_user.id),
@@ -607,7 +606,7 @@ async def auto_filter(client, msg, spoll=False):
         if total_results >= 3:
             if not settings["is_verify"]:
                 btn.insert(0,[
-                    InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", url=await get_shortlink(f'https://t.me/{temp.U_NAME}?start=allfiles_{message.chat.id}_{key}', grp_id)),
+                    
                     InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#0")
                 ])
             else:
@@ -618,35 +617,37 @@ async def auto_filter(client, msg, spoll=False):
         else:
             if not settings["is_verify"]:
                 btn.insert(0,[
-                    InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", url=await get_shortlink(f'https://t.me/{temp.U_NAME}?start=allfiles_{message.chat.id}_{key}', grp_id)),
-                    InlineKeyboardButton("🥇ʙᴜʏ🥇", url=f"https://t.me/{temp.U_NAME}?start=buy_premium")
-                ])
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+        ])
             else:
                 btn.insert(0,[
-                    InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", callback_data=f"send_all#{key}"),
-                    InlineKeyboardButton("🥇ʙᴜʏ🥇", url=f"https://t.me/{temp.U_NAME}?start=buy_premium")
-                ])
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+        ])
     else:
         if total_results >= 3:
             if not settings["is_verify"]:
                 btn.insert(0,[
-                    InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", url=await get_shortlink(f'https://t.me/{temp.U_NAME}?start=allfiles_{message.chat.id}_{key}', grp_id)),
-                    InlineKeyboardButton("🥇ʙᴜʏ🥇", url=f"https://t.me/{temp.U_NAME}?start=buy_premium")
-                ])
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+        ])
             else:
                 btn.insert(0,[
-                    InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", callback_data=f"send_all#{key}"),
-                    InlineKeyboardButton("🥇ʙᴜʏ🥇", url=f"https://t.me/{temp.U_NAME}?start=buy_premium")
-                ])
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+        ])
         else:
             if not settings["is_verify"]:
                 btn.insert(0,[
-                    InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", url=await get_shortlink(f'https://t.me/{temp.U_NAME}?start=allfiles_{message.chat.id}_{key}', grp_id))
-                ])
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+        ])
             else:
                 btn.insert(0,[
-                    InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", callback_data=f"send_all#{key}")
-                ])
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+        ])
                          
     if spoll:
         m = await msg.message.edit(f"<b><code>{search}</code> ɪs ꜰᴏᴜɴᴅ ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ꜰᴏʀ ꜰɪʟᴇs 📫</b>")
