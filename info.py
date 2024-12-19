@@ -21,8 +21,8 @@ def is_enabled(value, default):
 API_ID = int(environ.get('API_ID', '7851526'))
 API_HASH = environ.get('API_HASH', '93ba4db0ad662e558356871afe8ca6de')
 BOT_TOKEN = environ.get('BOT_TOKEN', '5181226004:AAG7T5qXan-v3X4IIgEaAtdHB6P8uuVwp0M')
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '957158815').split()]
-USERNAME = environ.get('USERNAME', 'https://telegram.me/lovetoride')
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '1491913883').split()]
+USERNAME = environ.get('USERNAME', 'https://telegram.me/Suriya_M2L')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002350694058'))
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '').split()]
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://ltoride:ltoride@cluster0.c4ls2lb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
@@ -40,15 +40,15 @@ URL = environ.get('URL', 'https://switchle-auto3.zh4klt.easypanel.host/')
 # verify system vars
 IS_VERIFY = is_enabled('IS_VERIFY', False)
 LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1001366123484'))
-TUTORIAL = environ.get("TUTORIAL", "https://t.me/tgtamillinks/57")
-TUTORIAL2 = environ.get("TUTORIAL2", "https://t.me/tgtamillinks/57")
-TUTORIAL3 = environ.get("TUTORIAL3", "https://t.me/tgtamillinks/57")
-VERIFY_IMG = environ.get("VERIFY_IMG", "https://t.me/tgtamillinks/57")
-SHORTENER_API = environ.get("SHORTENER_API", "5ef9638462736b0bf451579cd14d030da36f9f81")
+TUTORIAL = environ.get("TUTORIAL", "https://t.me/How2Downloadz/4")
+TUTORIAL2 = environ.get("TUTORIAL2", "https://t.me/How2Downloadz/4")
+TUTORIAL3 = environ.get("TUTORIAL3", "https://t.me/How2Downloadz/4")
+VERIFY_IMG = environ.get("VERIFY_IMG", "h")
+SHORTENER_API = environ.get("SHORTENER_API", "2a3ffcf09e643763909458e2b7b764ba7dd90ea2")
 SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", "earnwithlink.com")
-SHORTENER_API2 = environ.get("SHORTENER_API2", "5ef9638462736b0bf451579cd14d030da36f9f81")
+SHORTENER_API2 = environ.get("SHORTENER_API2", ""2a3ffcf09e643763909458e2b7b764ba7dd90ea2)
 SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", "earnwithlink.com")
-SHORTENER_API3 = environ.get("SHORTENER_API3", "5ef9638462736b0bf451579cd14d030da36f9f81")
+SHORTENER_API3 = environ.get("SHORTENER_API3", "2a3ffcf09e643763909458e2b7b764ba7dd90ea2")
 SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", "earnwithlink.com")
 TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "3600"))
 THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "21600"))
@@ -58,7 +58,7 @@ LANGUAGES = ["hindi", "english", "telugu", "tamil", "kannada", "malayalam"]
 
 auth_channel = environ.get('AUTH_CHANNEL', '')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
-SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1001366123484'))
+SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1001627223081'))
 
 # bot settings
 AUTO_FILTER = is_enabled('AUTO_FILTER', True)
