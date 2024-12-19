@@ -27,19 +27,19 @@ LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002350694058'))
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '').split()]
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://af1:af1@cluster0.cluhr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://af2:af2@cluster0.m6b7l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-DATABASE_NAME = environ.get('DATABASE_NAME', "Rahul")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Rahul')
+DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1001366123484'))
 QR_CODE = environ.get('QR_CODE', 'https://envs.sh/wam.jpg')
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '-1001610274164').split()]
 
 #this vars is for when heroku or koyeb acc get banned, then change this vars as your file to link bot name
-BIN_CHANNEL = int(environ.get('BIN_CHANNEL', '-1001366123484'))
+BIN_CHANNEL = int(environ.get('BIN_CHANNEL', '-1002329043221'))
 URL = environ.get('URL', 'https://switchle-auto3.zh4klt.easypanel.host/')
 
 # verify system vars
 IS_VERIFY = is_enabled('IS_VERIFY', False)
-LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1001366123484'))
+LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002329043221'))
 TUTORIAL = environ.get("TUTORIAL", "https://t.me/How2Downloadz/4")
 TUTORIAL2 = environ.get("TUTORIAL2", "https://t.me/How2Downloadz/4")
 TUTORIAL3 = environ.get("TUTORIAL3", "https://t.me/How2Downloadz/4")
