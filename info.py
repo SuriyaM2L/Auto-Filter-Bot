@@ -18,12 +18,12 @@ def is_enabled(value, default):
         return default
 
 #main variables
-API_ID = int(environ.get('API_ID', '2054877'))
-API_HASH = environ.get('API_HASH', '4227c1e45e462209a3dcc67ada88a44f')
-BOT_TOKEN = environ.get('BOT_TOKEN', '7499058839:AAHJ-zxAT8zT845ejdthVbg3nG5vavC1MKY')
+API_ID = int(environ.get('API_ID', '7851526'))
+API_HASH = environ.get('API_HASH', '93ba4db0ad662e558356871afe8ca6de')
+BOT_TOKEN = environ.get('BOT_TOKEN', '5181226004:AAG7T5qXan-v3X4IIgEaAtdHB6P8uuVwp0M')
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '957158815').split()]
 USERNAME = environ.get('USERNAME', 'https://telegram.me/lovetoride')
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001366123484'))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002350694058'))
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '').split()]
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://ltoride:ltoride@cluster0.c4ls2lb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://trvpn1:trvpn@cluster0.7kddrq3.mongodb.net/?retryWrites=true&w=majority")
