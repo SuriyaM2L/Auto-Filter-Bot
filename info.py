@@ -29,7 +29,7 @@ DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://af1:af1@cluster0.cluhr
 DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://af2:af2@cluster0.m6b7l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
-LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1001366123484'))
+LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1002350694058'))
 QR_CODE = environ.get('QR_CODE', 'https://envs.sh/wam.jpg')
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '-1001610274164').split()]
 
