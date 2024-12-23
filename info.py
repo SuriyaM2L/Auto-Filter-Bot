@@ -21,7 +21,7 @@ def is_enabled(value, default):
 API_ID = int(environ.get('API_ID', '7851526'))
 API_HASH = environ.get('API_HASH', '93ba4db0ad662e558356871afe8ca6de')
 BOT_TOKEN = environ.get('BOT_TOKEN', '5181226004:AAG7T5qXan-v3X4IIgEaAtdHB6P8uuVwp0M')
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '1491913883 957158815').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '1491913883 957158815 5011948526').split()]
 USERNAME = environ.get('USERNAME', 'https://telegram.me/Suriya_M2L')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002350694058'))
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001670136532 -1001951551775 -1001813221800 -1001654041347 -1001765415450 -1002070372480').split()]
