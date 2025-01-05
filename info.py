@@ -34,12 +34,12 @@ QR_CODE = environ.get('QR_CODE', 'https://envs.sh/wam.jpg')
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '-1001610274164').split()]
 
 #this vars is for when heroku or koyeb acc get banned, then change this vars as your file to link bot name
-BIN_CHANNEL = int(environ.get('BIN_CHANNEL', '-1002329043221'))
+BIN_CHANNEL = int(environ.get('BIN_CHANNEL', '-1002350694058'))
 URL = environ.get('URL', 'https://switchle-auto3.zh4klt.easypanel.host/')
 
 # verify system vars
 IS_VERIFY = is_enabled('IS_VERIFY', False)
-LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002329043221'))
+LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002350694058'))
 TUTORIAL = environ.get("TUTORIAL", "https://t.me/How2Downloadz/4")
 TUTORIAL2 = environ.get("TUTORIAL2", "https://t.me/How2Downloadz/4")
 TUTORIAL3 = environ.get("TUTORIAL3", "https://t.me/How2Downloadz/4")
