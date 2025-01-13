@@ -24,7 +24,7 @@ BOT_TOKEN = environ.get('BOT_TOKEN', '7935496045:AAEv2kd0fjHqKMPUUbIq6oHEoO27P5z
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '1491913883 957158815 5011948526').split()]
 USERNAME = environ.get('USERNAME', 'https://telegram.me/Suriya_M2L')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002350694058'))
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001898212023 -1001670136532 -1001951551775 -1001813221800 -1001654041347 -1001765415450 -1002070372480').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001670136532').split()]
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://af1:af1@cluster0.cluhr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://af2:af2@cluster0.m6b7l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
@@ -58,7 +58,7 @@ LANGUAGES = ["hindi", "english", "telugu", "tamil", "kannada", "malayalam"]
 
 auth_channel = environ.get('AUTH_CHANNEL', '')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
-SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1001627223081'))
+SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-100157742840'))
 
 # bot settings
 AUTO_FILTER = is_enabled('AUTO_FILTER', True)
