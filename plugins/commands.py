@@ -16,227 +16,146 @@ import re
 import base64
 
 @Client.on_message(filters.command("start") & filters.incoming)
-async def start(client:Client, message): 
+async def start(client: Client, message):
     m = message
     user_id = m.from_user.id
+
+    # Handle cases where a "notcopy" verification link is used
     if len(m.command) == 2 and m.command[1].startswith('notcopy'):
-        _, userid, verify_id, file_id = m.command[1].split("_", 3)
-        user_id = int(userid)
-        grp_id = temp.CHAT.get(user_id, 0)
-        settings = await get_settings(grp_id)         
-        verify_id_info = await db.get_verify_id_info(user_id, verify_id)
-        if not verify_id_info or verify_id_info["verified"]:
-            await message.reply("<b>ʟɪɴᴋ ᴇxᴘɪʀᴇᴅ ᴛʀʏ ᴀɢᴀɪɴ...</b>")
-            return  
-        ist_timezone = pytz.timezone('Asia/Kolkata')
-        if await db.user_verified(user_id):
-            key = "third_time_verified"
-        else:
-            key = "second_time_verified" if await db.is_user_verified(user_id) else "last_verified"
-        current_time = datetime.now(tz=ist_timezone)
-        result = await db.update_notcopy_user(user_id, {key:current_time})
-        await db.update_verify_id_info(user_id, verify_id, {"verified":True})
-        if key == "third_time_verified": 
-            num = 3 
-        else: 
-            num =  2 if key == "second_time_verified" else 1 
-        if key == "third_time_verified": 
-            msg = script.THIRDT_VERIFY_COMPLETE_TEXT
-        else:
-            msg = script.SECOND_VERIFY_COMPLETE_TEXT if key == "second_time_verified" else script.VERIFY_COMPLETE_TEXT
-        await client.send_message(settings['log'], script.VERIFIED_LOG_TEXT.format(m.from_user.mention, user_id, datetime.now(pytz.timezone('Asia/Kolkata')).strftime('%d %B %Y'), num))
-        btn = [[
-            InlineKeyboardButton("✅ ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴇᴛ ꜰɪʟᴇ ✅", url=f"https://telegram.me/{temp.U_NAME}?start=file_{grp_id}_{file_id}"),
-        ]]
-        reply_markup=InlineKeyboardMarkup(btn)
-        await m.reply_photo(
-            photo=(VERIFY_IMG),
-            caption=msg.format(message.from_user.mention),
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-        return 
-    if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        status = get_status()
-        aks=await message.reply_text(f"<b>🔥 ʏᴇs {status},\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>")
-        await asyncio.sleep(600)
-        await aks.delete()
-        await m.delete()
-        if (str(message.chat.id)).startswith("-100") and not await db.get_chat(message.chat.id):
-            total=await client.get_chat_members_count(message.chat.id)
-            group_link = await message.chat.export_invite_link()
-            user = message.from_user.mention if message.from_user else "Dear" 
-            await client.send_message(LOG_CHANNEL, script.NEW_GROUP_TXT.format(message.chat.title, message.chat.id, message.chat.username, group_link, total, user))       
-            await db.add_chat(message.chat.id, message.chat.title)
-        return 
-    if not await db.is_user_exist(message.from_user.id):
-        await db.add_user(message.from_user.id, message.from_user.first_name)
-        await client.send_message(LOG_CHANNEL, script.NEW_USER_TXT.format(message.from_user.id, message.from_user.mention))
-    if len(message.command) != 2:
-        buttons = [[    
-            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝙂𝙧𝙤𝙪𝙥’¬',url='https://t.me/discussion_hd_movies')],
-            [
-            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝘾𝙝𝙖𝙣𝙣𝙚𝙡˜„', url='https://t.me/tamil_links_official')
-            ],[
-            InlineKeyboardButton('𝙎𝙚𝙖𝙧𝙘𝙝 𝙃𝙚𝙧𝙚 𝙈𝙤𝙫𝙞𝙚𝙨', switch_inline_query_current_chat='')
-            ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_text(script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-        return
+        try:
+            _, userid, verify_id, file_id = m.command[1].split("_", 3)
+            user_id = int(userid)
+            grp_id = temp.CHAT.get(user_id, 0)
+            settings = await get_settings(grp_id)
 
-    if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help", "buy_premium"]:
-        if message.command[1] == "buy_premium":
-            btn = [[
-                InlineKeyboardButton('📸 sᴇɴᴅ sᴄʀᴇᴇɴsʜᴏᴛ 📸', url=USERNAME)
-            ],[
-                InlineKeyboardButton('🗑 ᴄʟᴏsᴇ 🗑', callback_data='close_data')
-            ]]            
-            await message.reply_photo(
-                photo=(QR_CODE),
-                caption=script.PREMIUM_TEXT.format(message.from_user.mention),
-                reply_markup=InlineKeyboardMarkup(btn)
+            # Check if the verification ID is valid
+            verify_id_info = await db.get_verify_id_info(user_id, verify_id)
+            if not verify_id_info or verify_id_info["verified"]:
+                await message.reply("<b>ʟɪɴᴋ ᴇxᴘɪʀᴇᴅ ᴛʀʏ ᴀɢᴀɪɴ...</b>")
+                return
+
+            # Mark the user as verified and log the event
+            current_time = datetime.now(pytz.timezone('Asia/Kolkata'))
+            await db.update_notcopy_user(user_id, {"verified_time": current_time})
+            await db.update_verify_id_info(user_id, verify_id, {"verified": True})
+
+            # Notify the log channel
+            await client.send_message(
+                settings['log'],
+                script.VERIFIED_LOG_TEXT.format(
+                    m.from_user.mention,
+                    user_id,
+                    current_time.strftime('%d %B %Y'),
+                    1
+                )
             )
-            return
-        buttons = [[    
-            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝙂𝙧𝙤𝙪𝙥’¬',url='https://t.me/discussion_hd_movies')],
-            [
-            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝘾𝙝𝙖𝙣𝙣𝙚𝙡˜„', url='https://t.me/tamil_links_official')
-            ],[
-            InlineKeyboardButton('𝙎𝙚𝙖𝙧𝙘𝙝 𝙃𝙚𝙧𝙚 𝙈𝙤𝙫𝙞𝙚𝙨', switch_inline_query_current_chat='')
+
+            # Send the file link to the user
+            btn = [[
+                InlineKeyboardButton(
+                    "✅ ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴇᴛ ꜰɪʟᴇ ✅", 
+                    url=f"https://telegram.me/{temp.U_NAME}?start=file_{grp_id}_{file_id}"
+                )
             ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_text(
-            text=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-        return
-
-    data = message.command[1]
-    try:
-        pre, grp_id, file_id = data.split('_', 2)
-    except:
-        pre, grp_id, file_id = "", 0, data
-
-    settings = await get_settings(int(data.split("_", 2)[1]))
-    id = settings.get('fsub_id', AUTH_CHANNEL)
-
-            
-    user_id = m.from_user.id
-    if not await db.has_premium_access(user_id):
-        grp_id = int(grp_id)
-        user_verified = await db.is_user_verified(user_id)
-        settings = await get_settings(grp_id)
-        is_second_shortener = await db.use_second_shortener(user_id, settings.get('verify_time', TWO_VERIFY_GAP)) 
-        is_third_shortener = await db.use_third_shortener(user_id, settings.get('third_verify_time', THREE_VERIFY_GAP))
-        if settings.get("is_verify", IS_VERIFY) and (not user_verified or is_second_shortener or is_third_shortener):
-            verify_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
-            await db.create_verify_id(user_id, verify_id)
-            temp.CHAT[user_id] = grp_id
-            verify = await get_shortlink(f"https://telegram.me/{temp.U_NAME}?start=notcopy_{user_id}_{verify_id}_{file_id}", grp_id, is_second_shortener, is_third_shortener)
-            if is_third_shortener:
-                rahul = settings.get('tutorial_three', TUTORIAL3)
-            else:
-                rahul = settings.get('tutorial_two', TUTORIAL2) if is_second_shortener else settings.get('tutorial', TUTORIAL)
-            buttons = [[
-                InlineKeyboardButton(text="✅️ ᴠᴇʀɪꜰʏ ✅️", url=verify),
-                InlineKeyboardButton(text="❗ ʜᴏᴡ ᴛᴏ ᴠᴇʀɪꜰʏ ❓", url=rahul)
-            ]]
-            reply_markup=InlineKeyboardMarkup(buttons)
-            if await db.user_verified(user_id): 
-                msg = script.THIRDT_VERIFICATION_TEXT
-            else:            
-                msg = script.SECOND_VERIFICATION_TEXT if is_second_shortener else script.VERIFICATION_TEXT
-            d = await m.reply_text(
-                text=msg.format(message.from_user.mention, get_status()),
-                protect_content = True,
+            reply_markup = InlineKeyboardMarkup(btn)
+            await m.reply_photo(
+                photo=(VERIFY_IMG),
+                caption=script.VERIFY_COMPLETE_TEXT.format(message.from_user.mention),
                 reply_markup=reply_markup,
                 parse_mode=enums.ParseMode.HTML
             )
-            await asyncio.sleep(300) 
-            await d.delete()
-            await m.delete()
-            return
-            
-    if data.startswith("allfiles"):
-        _, grp_id, key = data.split("_", 2)
-        files = temp.FILES_ID.get(key)
-        if not files:
-            await message.reply_text("<b>⚠️ ᴀʟʟ ꜰɪʟᴇs ɴᴏᴛ ꜰᴏᴜɴᴅ ⚠️</b>")
-            return
-        settings = await get_settings(int(grp_id))
-        all_files = []
-        for file in files:
-            settings = await get_settings(int(grp_id))
-            CAPTION = settings['caption']
-            f_caption = CAPTION.format(
-                file_name = file.file_name,
-                file_size = get_size(file.file_size),
-                file_caption=file.caption
-            )
-            btn=[[
-                InlineKeyboardButton("Update Channel",url = 'https://t.me/tgtamillinks')
-            ]]
-            dlt=await client.send_cached_media(
-                chat_id=message.from_user.id,
-                file_id=file.file_id,
-                caption=f_caption,
-                protect_content=settings['file_secure'],
-                reply_markup=InlineKeyboardMarkup(btn)
-            )
-            
-        
+        except Exception as e:
+            await message.reply(f"<b>Error:</b> {str(e)}")
         return
 
-    type_, grp_id, file_id = data.split("_", 2)
+    # Handle group messages
+    if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        status = get_status()
+        aks = await message.reply_text(f"<b>🔥 ʏᴇs {status},\nʜᴏᴡ ᴄᴀɴ ɪ ʜᴇʟᴘ ʏᴏᴜ??</b>")
+        await asyncio.sleep(600)
+        await aks.delete()
+        await m.delete()
+
+        # Log new group addition
+        if str(message.chat.id).startswith("-100") and not await db.get_chat(message.chat.id):
+            total = await client.get_chat_members_count(message.chat.id)
+            group_link = await message.chat.export_invite_link()
+            user = message.from_user.mention if message.from_user else "Dear"
+            await client.send_message(
+                LOG_CHANNEL, 
+                script.NEW_GROUP_TXT.format(
+                    message.chat.title, 
+                    message.chat.id, 
+                    message.chat.username, 
+                    group_link, 
+                    total, 
+                    user
+                )
+            )
+            await db.add_chat(message.chat.id, message.chat.title)
+        return
+
+    # Handle personal chat start
+    if not await db.is_user_exist(message.from_user.id):
+        await db.add_user(message.from_user.id, message.from_user.first_name)
+        await client.send_message(
+            LOG_CHANNEL, 
+            script.NEW_USER_TXT.format(message.from_user.id, message.from_user.mention)
+        )
+
+    # Default "start" command with no specific arguments
+    if len(message.command) != 2:
+        buttons = [[    
+            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝙂𝙧𝙤𝙪𝙥', url='https://t.me/discussion_hd_movies')],
+            [
+            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝘾𝙝𝙖𝙣𝙣𝙚𝙡', url='https://t.me/tamil_links_official')
+            ],[
+            InlineKeyboardButton('𝙎𝙚𝙖𝙧𝙘𝙝 𝙃𝙚𝙧𝙚 𝙈𝙤𝙫𝙞𝙚𝙨', switch_inline_query_current_chat='')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await message.reply_text(
+            script.START_TXT.format(
+                message.from_user.mention, 
+                get_status(), 
+                message.from_user.id
+            ),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+        return
+
+    # Handle file retrieval logic
+    data = message.command[1]
+    try:
+        type_, grp_id, file_id = data.split("_", 2)
+    except:
+        await message.reply('<b>⚠️ Invalid command format ⚠️</b>')
+        return
+
     files_ = await get_file_details(file_id)
     if not files_:
-        return await message.reply('<b>⚠️ ꜰɪʟᴇs ɴᴏᴛ ꜰᴏᴜɴᴅ ⚠️</b>')
-    files = files_[0]
-    grp_id = int(grp_id)
-    user_id = message.from_user.id
-    settings = await get_settings(int(grp_id))
-    if type_ != 'shortlink' and not settings.get("is_verify", IS_VERIFY):
-        link = await get_shortlink(f"https://t.me/{temp.U_NAME}?start=shortlink_{user_id}_{file_id}", grp_id)
-        link1 = f'https://t.me/{temp.U_NAME}?start=shortlink_{user_id}_{file_id}'
-        
-        
-        name = files.file_name
-        size = get_size(files.file_size)
-        caption = files.caption
-        btn = [[
-            InlineKeyboardButton("✅ Download ꜰɪʟᴇ ✅", url=link),
-            InlineKeyboardButton("⁉️ ʜᴏᴡ ᴛᴏ Download ⁉️", url=settings['tutorial'])
-        ]
-        ]
-        await message.reply(f"📂 𝐍𝐚𝐦𝐞 ➠  <code>{name}</code>\n\n♻️ 𝐒𝐢𝐳𝐞 ➠  {size}\n\n<code>⚡ Caption ➠ {caption}</code>\n\n<b><i>ʏᴏᴜʀ ꜰɪʟᴇ ɪꜱ ʀᴇᴀᴅʏ, ᴘʟᴇᴀꜱᴇ ɢᴇᴛ ᴜꜱɪɴɢ ᴛʜɪꜱ ʟɪɴᴋ 😋.</i></b>", reply_markup=InlineKeyboardMarkup(btn), protect_content=True)
+        await message.reply('<b>⚠️ ꜰɪʟᴇꜱ ɴᴏᴛ ꜰᴏᴜɴᴅ ⚠️</b>')
         return
 
-    files_ = await get_file_details(file_id)           
-    if not files_:
-        pre, file_id = ((base64.urlsafe_b64decode(data + "=" * (-len(data) % 4))).decode("ascii")).split("_", 1)
-        return await message.reply('<b>⚠️ ᴀʟʟ ꜰɪʟᴇs ɴᴏᴛ ꜰᴏᴜɴᴅ ⚠️</b>')
     files = files_[0]
     settings = await get_settings(int(grp_id))
     CAPTION = settings['caption']
     f_caption = CAPTION.format(
-        file_name = files.file_name,
-        file_size = get_size(files.file_size),
+        file_name=files.file_name,
+        file_size=get_size(files.file_size),
         file_caption=files.caption
     )
-    btn=[[
-                InlineKeyboardButton("Update Channel",url = 'https://t.me/tgtamillinks')
-            ]]
-    d=await client.send_cached_media(
+    btn = [[
+        InlineKeyboardButton("Update Channel", url='https://t.me/tgtamillinks')
+    ]]
+    await client.send_cached_media(
         chat_id=message.from_user.id,
-        file_id=file_id,
+        file_id=files.file_id,
         caption=f_caption,
         protect_content=settings['file_secure'],
         reply_markup=InlineKeyboardMarkup(btn)
     )
+
     
 
 @Client.on_message(filters.command('settings'))
