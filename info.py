@@ -38,7 +38,7 @@ BIN_CHANNEL = int(environ.get('BIN_CHANNEL', '-1002350694058'))
 URL = environ.get('URL', 'https://switchle-auto3.zh4klt.easypanel.host/')
 
 # verify system vars
-IS_VERIFY = is_enabled('IS_VERIFY', False)
+IS_VERIFY = is_enabled('IS_VERIFY', True)
 LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002350694058'))
 TUTORIAL = environ.get("TUTORIAL", "https://t.me/How2Downloadz/4")
 TUTORIAL2 = environ.get("TUTORIAL2", "https://t.me/How2Downloadz/4")
@@ -50,8 +50,8 @@ SHORTENER_API2 = environ.get("SHORTENER_API2", "2a3ffcf09e643763909458e2b7b764ba
 SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", "earnwithlink.com")
 SHORTENER_API3 = environ.get("SHORTENER_API3", "2a3ffcf09e643763909458e2b7b764ba7dd90ea2")
 SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", "earnwithlink.com")
-TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "3600"))
-THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "21600"))
+TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "21600"))
+THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "43200"))
 
 # languages search
 LANGUAGES = ["hindi", "english", "telugu", "tamil", "kannada", "malayalam"]
