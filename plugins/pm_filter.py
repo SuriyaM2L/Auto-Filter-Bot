@@ -216,13 +216,13 @@ async def lang_search(client: Client, query: CallbackQuery):
               ]
     if not settings["is_verify"]:
         btn.insert(0,[
-            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
-            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
     else:
         btn.insert(0,[
-            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
-            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
     if n_offset != "":
         btn.append(
@@ -270,13 +270,13 @@ async def lang_next_page(bot, query):
         ]
     if not settings['is_verify']:
         btn.insert(0,[
-            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
-            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
     else:
         btn.insert(0,[
-            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
-            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
     if 0 < l_offset <= MAX_BTN:
         b_offset = 0
@@ -611,42 +611,41 @@ async def auto_filter(client, msg, spoll=False):
                 ])
             else:
                 btn.insert(0,[
-                    InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", callback_data=f"send_all#{key}"),
                     InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#0")
                 ])
         else:
             if not settings["is_verify"]:
                 btn.insert(0,[
-            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
-            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
             else:
                 btn.insert(0,[
-            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
-            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
     else:
         if total_results >= 3:
             if not settings["is_verify"]:
                 btn.insert(0,[
-            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
-            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
             else:
                 btn.insert(0,[
-            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
-            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
         else:
             if not settings["is_verify"]:
                 btn.insert(0,[
-            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
-            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
             else:
                 btn.insert(0,[
-            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/tgtamillinks/57'),
-            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/tgtamillinks")
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
                          
     if spoll:
