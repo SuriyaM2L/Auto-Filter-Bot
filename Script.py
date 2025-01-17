@@ -1,7 +1,7 @@
 import os
 class script(object):
     
-    START_TXT = """<bHi, I am [{first_name}](tg://user?id={user_id})
+    START_TXT = """<b>Hi, I am [{first_name}](tg://user?id={user_id})
 
  ➠ I'm Only Work For [M➋LMOVIEZ](https://t.me/M2LMOVIEZ)
 
