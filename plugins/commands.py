@@ -100,11 +100,10 @@ async def start(client:Client, message):
             )
             return
         buttons = [[    
-            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝙂𝙧𝙤𝙪𝙥’¬',url='https://t.me/discussion_hd_movies')],
-            [
-            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝘾𝙝𝙖𝙣𝙣𝙚𝙡˜„', url='https://t.me/tamil_links_official')
+            InlineKeyboardButton('Group',url='https://t.me/M2LGROUPz1'),
+            InlineKeyboardButton('Channel', url='https://t.me/M2LMOVIEZ')
             ],[
-            InlineKeyboardButton('𝙎𝙚𝙖𝙧𝙘𝙝 𝙃𝙚𝙧𝙚 𝙈𝙤𝙫𝙞𝙚𝙨', switch_inline_query_current_chat='')
+            InlineKeyboardButton('Backup_Channel',url ='https://t.me/M2L_Backup')
             ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_text(
