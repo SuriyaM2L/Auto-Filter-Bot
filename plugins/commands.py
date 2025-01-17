@@ -74,8 +74,7 @@ async def start(client:Client, message):
         await client.send_message(LOG_CHANNEL, script.NEW_USER_TXT.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
         buttons = [[    
-            InlineKeyboardButton('Group',url='https://t.me/M2LGROUPz1')],
-            [
+            InlineKeyboardButton('Group',url='https://t.me/M2LGROUPz1'),
             InlineKeyboardButton('Channel', url='https://t.me/M2LMOVIEZ')
             ],[
             InlineKeyboardButton('Backup_Channel',url ='https://t.me/M2L_Backup')
