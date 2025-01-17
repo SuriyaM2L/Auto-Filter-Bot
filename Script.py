@@ -51,7 +51,7 @@ User - {}"""
 ❗️ ʟᴀɴɢᴜᴀɢᴇ - {languages}</b>
 """
 
-    FILE_CAPTION = """<b>{filename}
+    FILE_CAPTION = """<b>{file_name}
     ━═━═━═━═━═━═━═━═━═
 ɢʀᴏᴜᴘ    ➧ @M2LGROUPz1
 ᴄʜᴀɴɴᴇʟ ➧ @M2L_Backup
