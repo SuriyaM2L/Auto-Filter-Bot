@@ -177,7 +177,7 @@ async def start(client:Client, message):
                 file_caption=file.caption
             )
             btn=[[
-                InlineKeyboardButton("Update Channel",url = 'https://t.me/tgtamillinks')
+                InlineKeyboardButton("Update Channel",url = 'https://t.me/M2LMOVIEZ')
             ]]
             dlt=await client.send_cached_media(
                 chat_id=message.from_user.id,
