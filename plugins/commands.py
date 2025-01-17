@@ -72,13 +72,13 @@ async def start(client:Client, message):
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id, message.from_user.first_name)
         await client.send_message(LOG_CHANNEL, script.NEW_USER_TXT.format(message.from_user.id, message.from_user.mention))
-    if len(message.command) != 2:
+     if len(message.command) != 2:
+        
         buttons = [[    
-            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝙂𝙧𝙤𝙪𝙥’¬',url='https://t.me/discussion_hd_movies')],
-            [
-            InlineKeyboardButton('𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝘾𝙝𝙖𝙣𝙣𝙚𝙡˜„', url='https://t.me/tamil_links_official')
+            InlineKeyboardButton('Group',url='https://t.me/M2LGROUPz2'),
+            InlineKeyboardButton('Channel', url='https://t.me/M2LMOVIEZ')
             ],[
-            InlineKeyboardButton('𝙎𝙚𝙖𝙧𝙘𝙝 𝙃𝙚𝙧𝙚 𝙈𝙤𝙫𝙞𝙚𝙨', switch_inline_query_current_chat='')
+            InlineKeyboardButton('Backup_Channel',url ='https://t.me/M2L_Backup')
             ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_text(script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
