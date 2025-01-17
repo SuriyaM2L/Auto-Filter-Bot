@@ -3,7 +3,7 @@ class script(object):
     
     START_TXT = """<b>Hi, I am {} {}
 
- ➠ I'm Only Work For <a href=https://t.me/M2LMOVIEZ[M➋LMOVIEZ}</a>
+ ➠ I'm Only Work For <a href=https://t.me/M2LMOVIEZ{M➋LMOVIEZ}</a>
 
  ➠ Join Our Group For More Movies & Series Working 24/7></b>"""
     
