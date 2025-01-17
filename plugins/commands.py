@@ -226,16 +226,7 @@ async def start(client:Client, message):
         file_size = get_size(files.file_size),
         file_caption=files.caption
     )
-    btn=[[
-                InlineKeyboardButton("Update Channel",url = 'https://t.me/M2LMOVIEZ')
-            ]]
-    d=await client.send_cached_media(
-        chat_id=message.from_user.id,
-        file_id=file_id,
-        caption=f_caption,
-        protect_content=settings['file_secure'],
-        reply_markup=InlineKeyboardMarkup(btn)
-    )
+    
     
 
 @Client.on_message(filters.command('settings'))
