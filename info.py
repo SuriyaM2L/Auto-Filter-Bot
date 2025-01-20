@@ -63,7 +63,7 @@ SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1001577428406'))
 # bot settings
 AUTO_FILTER = is_enabled('AUTO_FILTER', True)
 PORT = os.environ.get('PORT', '8080')
-MAX_BTN = int(environ.get('MAX_BTN', '6'))
+MAX_BTN = int(environ.get('MAX_BTN', '4'))
 AUTO_DELETE = is_enabled('AUTO_DELETE', True)
 DELETE_TIME = int(environ.get('DELETE_TIME', 600))
 IMDB = is_enabled('IMDB', False)
