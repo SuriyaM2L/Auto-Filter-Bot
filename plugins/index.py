@@ -105,23 +105,21 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot, skip):
                     btn = [[
                         InlineKeyboardButton('CANCEL', callback_data=f'index#cancel#{chat}#{lst_msg_id}#{skip}')
                     ]]
-                    await msg.edit_text(text=f"Total messages received: <code>{current}</code>\nTotal messages saved: <code>{total_files}</code>\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>\nUnsupported Media: <code>{unsupported}</code>\nErrors Occurred: <code>{errors}</code>", reply_markup=InlineKeyboardMarkup(btn))
+                    #await msg.edit_text(text=f"Total messages received: <code>{current}</code>\nTotal messages saved: <code>{total_files}</code>\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>\nUnsupported Media: <code>{unsupported}</code>\nErrors Occurred: <code>{errors}</code>", reply_markup=InlineKeyboardMarkup(btn))
                 if message.empty:
                     deleted += 1
                     continue
                 elif not message.media:
                     no_media += 1
                     continue
-                elif message.media not in [enums.MessageMediaType.VIDEO, enums.MessageMediaType.DOCUMENT]:
+                elif message.media not in [enums.MessageMediaType.VIDEO, enums.MessageMediaType.AUDIO, enums.MessageMediaType.DOCUMENT]:
                     unsupported += 1
                     continue
                 media = getattr(message, message.media.value, None)
                 if not media:
                     unsupported += 1
                     continue
-                elif media.mime_type not in ['video/mp4', 'video/x-matroska']:
-                    unsupported += 1
-                    continue
+                media.file_type = message.media.value
                 media.caption = message.caption
                 sts = await save_file(media)
                 if sts == 'suc':
