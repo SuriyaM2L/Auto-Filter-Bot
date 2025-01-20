@@ -121,7 +121,21 @@ async def start(client:Client, message):
 
     settings = await get_settings(int(data.split("_", 2)[1]))
     id = settings.get('fsub_id', AUTH_CHANNEL)
-
+    channel = int(id)
+    if settings.get('fsub_id', AUTH_CHANNEL) and not await is_subscribed(client, message.from_user.id, channel):
+        invite_link = await client.create_chat_invite_link(channel)
+        btn = [[
+                InlineKeyboardButton("⛔️ ᴊᴏɪɴ ɴᴏᴡ ⛔️", url=invite_link.invite_link)
+                ]]
+        if message.command[1] != "subscribe":
+            btn.append([InlineKeyboardButton("♻️ ᴛʀʏ ᴀɢᴀɪɴ ♻️", url=f"https://t.me/{temp.U_NAME}?start={message.command[1]}")])
+        await client.send_message(
+            chat_id=message.from_user.id,
+            text=script.FSUB_TXT.format(message.from_user.mention),
+            reply_markup=InlineKeyboardMarkup(btn),
+            parse_mode=enums.ParseMode.HTML
+        )
+        return
             
     user_id = m.from_user.id
     if not await db.has_premium_access(user_id):
