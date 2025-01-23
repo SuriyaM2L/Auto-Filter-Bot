@@ -121,6 +121,8 @@ async def next_page(bot, query):
         btn.insert(0,[
             
             InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#{offset}")
+        ],[
+            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
         ])
 
 
@@ -128,6 +130,8 @@ async def next_page(bot, query):
         btn.insert(0,[
             
             InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#{offset}")
+        ],[
+            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
         ])
 
     if 0 < offset <= int(MAX_BTN):
@@ -603,10 +607,14 @@ async def auto_filter(client, msg, spoll=False):
                 btn.insert(0,[
                     
                     InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#0")
+                ],[
+            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
                 ])
             else:
                 btn.insert(0,[
                     InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#0")
+                ],[
+            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
                 ])
         else:
             if not settings["is_verify"]:
