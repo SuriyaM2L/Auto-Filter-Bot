@@ -122,12 +122,19 @@ async def next_page(bot, query):
             
             InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#{offset}")
         ])
-
+        btn.insert(0,[
+            
+            InlineKeyboardButton('Backup_Channel',url ='https://t.me/M2L_Backup')
+        ])
 
     else:
         btn.insert(0,[
             
             InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#{offset}")
+        ])
+        btn.insert(0,[
+            
+            InlineKeyboardButton('Backup_Channel',url ='https://t.me/M2L_Backup')
         ])
 
     if 0 < offset <= int(MAX_BTN):
@@ -605,12 +612,21 @@ async def auto_filter(client, msg, spoll=False):
         if total_results >= 3:
             if not settings["is_verify"]:
                 btn.insert(0,[
-                    
-                    InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#0")
+            
+            InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#{offset}")
+                ])
+                btn.insert(0,[
+            
+            InlineKeyboardButton('Backup_Channel',url ='https://t.me/M2L_Backup')
                 ])
             else:
                 btn.insert(0,[
-                    InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#0")
+            
+            InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#{offset}")
+                ])
+                btn.insert(0,[
+            
+            InlineKeyboardButton('Backup_Channel',url ='https://t.me/M2L_Backup')
                 ])
         else:
             if not settings["is_verify"]:
