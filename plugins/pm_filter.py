@@ -605,16 +605,15 @@ async def auto_filter(client, msg, spoll=False):
         if total_results >= 3:
             if not settings["is_verify"]:
                 btn.insert(0,[
-                    
                     InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#0")
                 ],[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
+                    InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
                 ])
             else:
                 btn.insert(0,[
                     InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#0")
                 ],[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
+                    InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
                 ])
         else:
             if not settings["is_verify"]:
