@@ -1,4 +1,4 @@
-git+https://github.com/KurimuzonAkuma/pyrogram
+git+https://github.com/KurimuzonAkuma/pyrogram.git@v2.1.33 --force-reinstall.
 tgcrypto
 pymongo>=4.5
 motor>=3.0.0
