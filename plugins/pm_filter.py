@@ -121,8 +121,6 @@ async def next_page(bot, query):
         btn.insert(0,[
             
             InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#{offset}")
-        ],[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
         ])
 
 
@@ -130,8 +128,6 @@ async def next_page(bot, query):
         btn.insert(0,[
             
             InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#{offset}")
-        ],[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
         ])
 
     if 0 < offset <= int(MAX_BTN):
@@ -220,11 +216,13 @@ async def lang_search(client: Client, query: CallbackQuery):
               ]
     if not settings["is_verify"]:
         btn.insert(0,[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
     else:
         btn.insert(0,[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
     if n_offset != "":
         btn.append(
@@ -272,11 +270,13 @@ async def lang_next_page(bot, query):
         ]
     if not settings['is_verify']:
         btn.insert(0,[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
     else:
         btn.insert(0,[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
     if 0 < l_offset <= MAX_BTN:
         b_offset = 0
@@ -605,43 +605,46 @@ async def auto_filter(client, msg, spoll=False):
         if total_results >= 3:
             if not settings["is_verify"]:
                 btn.insert(0,[
+                    
                     InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#0")
-                ],[
-                    InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
                 ])
             else:
                 btn.insert(0,[
                     InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{req}#0")
-                ],[
-                    InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
                 ])
         else:
             if not settings["is_verify"]:
                 btn.insert(0,[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
             else:
                 btn.insert(0,[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
     else:
         if total_results >= 3:
             if not settings["is_verify"]:
                 btn.insert(0,[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
             else:
                 btn.insert(0,[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
         else:
             if not settings["is_verify"]:
                 btn.insert(0,[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
             else:
                 btn.insert(0,[
-            InlineKeyboardButton("🤔 How To Download 🤔", url='https://t.me/How2Downloadz/4')
+            InlineKeyboardButton("♻️ HOW To Download ♻️", url='https://t.me/How2Downloadz/4'),
+            InlineKeyboardButton("UPDATE_CHANNEL", url=f"https://t.me/M2LMOVIEZ")
         ])
                          
     if spoll:
